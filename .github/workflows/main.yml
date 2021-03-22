@@ -33,3 +33,11 @@ jobs:
         run: npm run build
       - name: test 
         run: npm run test 
+      - name: deploy app to firebase  
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SOURDOUGH_CALC }}'
+          projectId: sourdough-calc
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
