@@ -31,10 +31,9 @@ jobs:
         run: npm install
       - name: test 
         run: npm run test 
+      - run: npm run build   
       - name: deploy app to firebase  
-      - uses: actions/checkout@v2
-      - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SOURDOUGH_CALC }}'
